@@ -20,7 +20,7 @@
   excludesfile = ~/.gitignore
   editor = subl -n -w
 [push]
-  default = simple
+  default = current
 [apply]
   whitespace = nowarn
 [mergetool]
