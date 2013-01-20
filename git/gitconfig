@@ -19,6 +19,8 @@
 [core]
   excludesfile = ~/.gitignore
   editor = subl -n -w
+[push]
+  default = simple
 [apply]
   whitespace = nowarn
 [mergetool]
