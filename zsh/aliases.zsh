@@ -1,6 +1,7 @@
 alias reload!='. ~/.zshrc'
 alias b='bundle exec'
 alias please='sudo'
+alias mkbundle='bundle install --path .bundle'
 
 # Services start-ups and shut-downs
 

@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'open-uri'
+require 'yaml'
+
+BASE_DIR = File.join(File.dirname(__FILE__), '..', 'vim')
+BUNDLE_DIR = File.join(BASE_DIR, 'bundle')
+PACKAGES_FILE = File.join(BASE_DIR, 'packages.yml')
+
+ACTION = ARGV[0]
+exit unless [nil, 'edit', 'install', 'update'].include?(ACTION)
+
+if ACTION == 'edit'
+  `subl #{PACKAGES_FILE}`
+  exit
+end
+
+PACKAGES = (YAML.load_file(PACKAGES_FILE) || {}).map do |package|
+  package['dir'] = File.join(BUNDLE_DIR, package['dir'])
+  package
+end
+INSTALLED = Dir.entries(BUNDLE_DIR).delete_if{ |f| ['.', '..'].include?(f) }
+
+def install(meta)
+  `git clone git@github.com:#{meta['github']}.git #{meta['dir']} 2>/dev/null`
+  FileUtils.mv("#{meta['dir']}/.git", "#{meta['dir']}/_git")
+end
+
+def update(meta)
+  FileUtils.mv("#{meta['dir']}/_git", "#{meta['dir']}/.git")
+  `cd #{meta['dir']} && git pull 2>/dev/null`
+  FileUtils.mv("#{meta['dir']}/.git", "#{meta['dir']}/_git")
+end
+
+def remove(dir)
+  name = dir.split(?/).last.gsub(/\.-/, '_').split(?_).map(&:capitalize).join(' ')
+  puts "Removing #{name}"
+  FileUtils.rm_r(File.join(BUNDLE_DIR, dir))
+end
+
+# Removing packages
+(INSTALLED - PACKAGES.map{ |b| b['dir'].split(?/).last }).each{ |b| remove(b) }
+
+PACKAGES.each do |meta|
+  if File.exist?(meta['dir'])
+    if ACTION != 'install'
+      puts "Updating #{meta['name']}"
+      update(meta)
+    else
+      puts "Using #{meta['name']}"
+    end
+  else
+    if ACTION != 'update'
+      puts "Installing #{meta['name']}"
+      install(meta)
+    else
+      puts "Using #{meta['name']}"
+    end
+  end
+end
+
+puts
+puts 'Done'

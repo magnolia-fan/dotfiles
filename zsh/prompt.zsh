@@ -14,21 +14,22 @@ git_dirty() {
   else
     if [[ $st == "nothing to commit (working directory clean)" ]]
     then
-      echo " %{$fg_bold[green]%}($(git_prompt_info))%{$reset_color%}"
+      echo " %F{002}($(git_prompt_info))%f"
     else
-      echo " %{$fg_bold[red]%}($(git_prompt_info))%{$reset_color%}"
+      echo " %F{001}($(git_prompt_info))%f"
     fi
   fi
 }
 
 git_prompt_info () {
  ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
-# echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
  echo "${ref#refs/heads/}"
 }
 
 unpushed () {
-  /usr/bin/git cherry -v @{upstream} 2>/dev/null
+  if [[ -a .git ]]; then
+    git diff origin/master..HEAD
+  fi
 }
 
 need_push () {
@@ -36,14 +37,14 @@ need_push () {
   then
     echo ""
   else
-    echo " %{$fg_bold[magenta]%}➠%{$reset_color%}"
+    echo " %F{005}↑↑%f"
   fi
 }
 
 rb_prompt(){
   if $(which rbenv &> /dev/null)
   then
-    echo "%{$fg_bold[cyan]%}$(rbenv version | awk '{print $1}')%{$reset_color%}"
+    echo "%F{004%}$(rbenv version | awk '{print $1}')%f"
   else
     echo ""
   fi
@@ -54,7 +55,7 @@ current_time(){
 }
 
 directory_name(){
-  echo "%{$fg_bold[blue]%}%1/%\%{$reset_color%}"
+  echo "%F{003%}%1/%\%f"
 }
 
 export PROMPT=$'\n$(directory_name)$(git_dirty)$(need_push) › '

@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+files = `du -k -d 1`.scan(/(\d+).*\.\/(.*)/)
+maxlen = files.max_by{ |f| f[1].length }[1].length
+
+files.sort_by{ |f| f[0].to_i }.reverse.each do |f|
+  name = f[1]
+  size = f[0].to_i
+
+  print "%-#{maxlen+1}s" % name
+  if size < 1024
+    puts "#{size}K"
+  else
+    puts "#{size / 1024}M"
+  end
+end

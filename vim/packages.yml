@@ -1,0 +1,60 @@
+- name: Ruby Debugger
+  dir: ruby_debugger
+  github: astashov/vim-ruby-debugger
+- name: Super Tab
+  dir: supertab
+  github: ervandew/supertab
+- name: Tabular
+  dir: tabular
+  github: godlygeek/tabular
+- name: Rdoc
+  dir: rdoc
+  github: depuracao/vim-rdoc
+- name: Snip Mate
+  dir: snipmate
+  github: msanders/snipmate.vim
+- name: JavaScript
+  dir: javascript
+  github: pangloss/vim-javascript
+- name: Nerd Tree
+  dir: nerdtree
+  github: scrooloose/nerdtree
+- name: Textile
+  dir: textile
+  github: timcharper/textile.vim
+- name: Cucumber
+  dir: cucumber
+  github: tpope/vim-cucumber
+- name: Haml
+  dir: haml
+  github: tpope/vim-haml
+- name: Markdown
+  dir: markdown
+  github: tpope/vim-markdown
+- name: Rails
+  dir: rails
+  github: tpope/vim-rails
+- name: Repeat
+  dir: repeat
+  github: tpope/vim-repeat
+- name: Surround
+  dir: surround
+  github: tpope/vim-surround
+- name: Vivid Chalk
+  dir: vivid_chalk
+  github: tpope/vim-vividchalk
+- name: Matchit
+  dir: matchit
+  github: tsaleh/vim-matchit
+- name: tmux
+  dir: tmux
+  github: tsaleh/vim-tmux
+- name: Ruby
+  dir: ruby
+  github: vim-ruby/vim-ruby
+- name: Gist
+  dir: gist
+  github: vim-scripts/Gist.vim
+- name: Solarized
+  dir: solarized
+  github: altercation/vim-colors-solarized
