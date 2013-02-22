@@ -1,3 +1,5 @@
 .DS_Store
 .bundle
 .rake_tasks
+*.sublime-project
+*.sublime-workspace

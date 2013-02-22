@@ -1,0 +1,9 @@
+require 'irb'
+require 'irb/completion'
+require 'irb/ext/save-history'
+require 'rubygems'
+require 'ap'
+
+IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:AUTO_INDENT] = true
+AwesomePrint.irb!

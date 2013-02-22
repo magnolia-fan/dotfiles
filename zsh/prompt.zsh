@@ -1,18 +1,19 @@
 autoload colors && colors
-# cheers, @ehrenmurdick
-# http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
+
+# Using git from Homebrew instead of default one
+git=/usr/local/bin/git
 
 git_branch() {
-  echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
 
 git_dirty() {
-  st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
+  st=$($git status 2>/dev/null | tail -n 1)
   if [[ $st == "" ]]
   then
     echo ""
   else
-    if [[ $st == "nothing to commit (working directory clean)" ]]
+    if [[ "$st" =~ ^nothing ]]
     then
       echo " %F{002}($(git_prompt_info))%f"
     else
@@ -22,14 +23,12 @@ git_dirty() {
 }
 
 git_prompt_info () {
- ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
- echo "${ref#refs/heads/}"
+  ref=$($git symbolic-ref HEAD 2>/dev/null) || return
+  echo "${ref#refs/heads/}"
 }
 
 unpushed () {
-  if [[ -a .git ]]; then
-    git diff origin/master..HEAD
-  fi
+  $git cherry -v @{upstream} 2>/dev/null
 }
 
 need_push () {

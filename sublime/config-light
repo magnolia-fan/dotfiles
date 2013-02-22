@@ -4,8 +4,8 @@
   "drag_text": false,
   "ensure_newline_at_eof_on_save": true,
   "fallback_encoding": "Cyrillic (Windows 1251)",
-  "font_face": "Inconsolata",
-  "font_size": 16.0,
+  "font_face": "Source Code Pro",
+  "font_size": 14.0,
   "highlight_line": true,
   "ignored_packages": ["Vintage"],
   "line_padding_bottom": 1,
@@ -16,6 +16,6 @@
   "translate_tabs_to_spaces": true,
   "tree_animation_enabled": false,
   "trim_trailing_white_space_on_save": true,
-  "folder_exclude_patterns": [".git", ".bundle"],
+  "folder_exclude_patterns": [".git", ".bundle", ".sass-cache"],
   "file_exclude_patterns": [".DS_Store"]
 }
