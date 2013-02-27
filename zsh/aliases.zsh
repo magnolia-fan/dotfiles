@@ -1,13 +1,20 @@
-alias reload!='. ~/.zshrc'
-alias b='bundle exec'
-alias please='sudo'
-alias mkbundle='bundle install --path .bundle'
+alias reload!=". ~/.zshrc"
+alias please="sudo"
+
+# Ruby & Rails
+alias b="bundle exec"
+alias mkbundle="bundle install --path .bundle"
+alias ss="git up && bundle && bundle exec rake db:migrate"
+alias rc="bundle exec rails c"
+alias rs="bundle exec rails s"
 
 # Git
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gc="git commit -m"
 alias ga="git add -u && git add . && git st"
 alias gs="git st"
+alias gd="git diff"
+alias gp="git push"
 
 # Services start-ups and shut-downs
 
