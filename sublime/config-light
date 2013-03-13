@@ -1,21 +1,39 @@
 {
+  // Themes, Colors and Fonts
+  "theme": "Soda Light.sublime-theme",
   "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow.tmTheme",
-  "default_line_ending": "unix",
-  "drag_text": false,
-  "ensure_newline_at_eof_on_save": true,
-  "fallback_encoding": "Cyrillic (Windows 1251)",
   "font_face": "Source Code Pro",
-  "font_size": 14.0,
+  "font_size": 12.0,
+  "font_options": ["subpixel_antialias", "no_bold", "no_italic"],
+
+  // Behavior
+  "drag_text": false,
+  "highlight_modified_tabs": true,
+  "close_windows_when_empty": false,
+  "tree_animation_enabled": false,
+
+  // Text & Code
+  "fallback_encoding": "Cyrillic (Windows 1251)",
+  "default_line_ending": "unix",
+  "translate_tabs_to_spaces": true,
+  "ensure_newline_at_eof_on_save": true,
+  "trim_trailing_white_space_on_save": true,
+  "tab_size": 2,
+
+  // Editor
   "highlight_line": true,
-  "ignored_packages": ["Vintage"],
+  "rulers": [120],
   "line_padding_bottom": 1,
   "line_padding_top": 3,
-  "rulers": [120],
-  "tab_size": 2,
-  "theme": "Soda Light.sublime-theme",
-  "translate_tabs_to_spaces": true,
-  "tree_animation_enabled": false,
-  "trim_trailing_white_space_on_save": true,
-  "folder_exclude_patterns": [".git", ".bundle", ".sass-cache"],
-  "file_exclude_patterns": [".DS_Store"]
+  "gutter": true,
+  "line_numbers": true,
+  "fold_buttons": false,
+  "draw_minimap_border": false,
+  "highlight_modified_tabs": true,
+  "close_windows_when_empty": false,
+
+  // Bullshit
+  "ignored_packages": ["Vintage"],
+  "file_exclude_patterns": [".DS_Store", "*.sublime-*"],
+  "folder_exclude_patterns": [".git", ".bundle", ".sass-cache"]
 }
