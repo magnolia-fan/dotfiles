@@ -22,7 +22,6 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Services start-ups and shut-downs
-
 alias mysql-start="mysql.server start"
 alias mysql-stop="mysql.server stop"
 alias mysql-restart="mysql.server restart"
