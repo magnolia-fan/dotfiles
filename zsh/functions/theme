@@ -1,12 +1,50 @@
-local sublime_conf_location=~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+local sublime_conf_location=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings
 local theme="$1"
 
 case $theme in
-light|dark)
-  local sublime_conf_file="$ZSH/sublime/config-$theme" ;;
-*)
-  local sublime_conf_file="$ZSH/sublime/config-dark" ;;
-esac
 
-rm $sublime_conf_location
-cp $sublime_conf_file $sublime_conf_location
+light)
+
+cp $ZSH/sublime/config-light $sublime_conf_location
+osascript <<-END
+tell application "iTerm"
+  repeat with myTerminal in terminals
+    repeat with mySession in sessions in myTerminal
+      tell mySession
+        set background color to {64842, 62778, 56626}
+        set bold color to {18134, 23373, 25098}
+        set cursor color to {21257, 26684, 28737}
+        set cursor_text color to {60037, 58326, 52284}
+        set foreground color to {21257, 26684, 28737}
+        set selection color to {60037, 58326, 52284}
+        set selected text color to {18134, 23373, 25098}
+      end tell
+    end repeat
+  end repeat
+end tell
+END
+;;
+
+dark)
+
+cp $ZSH/sublime/config-dark $sublime_conf_location
+osascript <<-END
+tell application "iTerm"
+  repeat with myTerminal in terminals
+    repeat with mySession in sessions in myTerminal
+      tell mySession
+        set background color to {0, 7722, 9941}
+        set bold color to {33160, 37017, 36937}
+        set cursor color to {28873, 33398, 33872}
+        set cursor_text color to {0, 10207, 12694}
+        set foreground color to {28873, 33398, 33872}
+        set selection color to {0, 10207, 12694}
+        set selected text color to {33160, 37017, 36937}
+      end tell
+    end repeat
+  end repeat
+end tell
+END
+;;
+
+esac
