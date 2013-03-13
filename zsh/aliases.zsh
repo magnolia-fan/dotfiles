@@ -1,3 +1,4 @@
+alias ll="ls -lah"
 alias reload!=". ~/.zshrc"
 alias please="sudo"
 
@@ -15,6 +16,10 @@ alias ga="git add -u && git add . && git st"
 alias gs="git st"
 alias gd="git diff"
 alias gp="git push"
+
+# OSX
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Services start-ups and shut-downs
 
