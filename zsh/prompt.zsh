@@ -23,7 +23,7 @@ git_dirty() {
 }
 
 git_need_commit() {
-  git diff --stat 2>/dev/null | awk -F',' '/files? changed/ { lc += $2 + $3 } END {
+  $git diff --stat 2>/dev/null | awk -F',' '/files? changed/ { lc += $2 + $3 } END {
     if (lc > 100) print "\n%F{005}Y U NO COMMIT!?%f"
   }'
 }
