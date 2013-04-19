@@ -4,18 +4,31 @@ alias please="sudo"
 
 # Ruby & Rails
 alias b="bundle exec"
-alias mkbundle="bundle install --path .bundle"
-alias ss="git up && bundle && bundle exec rake db:migrate"
-alias rc="bundle exec rails c"
-alias rs="bundle exec rails s"
+
+alias rails="bundle exec rails"
+alias rake="bundle exec rake"
+alias rspec="bundle exec rspec"
+alias cap="bundle exec cap"
+alias cucumber="bundle exec cucumber"
+
+alias mkbundle="bundle install --path vendor/gems"
+alias ss="git up && bundle --quiet && bundle exec rake db:migrate"
+alias rc="rails c"
+alias rs="rails s"
+alias rs1="rails s -p3001"
+alias rs2="rails s -p3002"
+alias fs="bundle exec foreman start"
 
 # Git
+alias git="git-achievements"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gc="git commit -m"
+alias gc="git ci -m"
 alias ga="git add -u && git add . && git st"
 alias gs="git st"
 alias gd="git diff"
 alias gp="git push"
+alias gu="gut up"
+alias gb="git br"
 
 # OSX
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"

@@ -2,3 +2,4 @@
 .bundle
 .rake_tasks
 *.sublime-*
+vendor/gems

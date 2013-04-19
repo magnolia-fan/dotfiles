@@ -22,6 +22,12 @@ git_dirty() {
   fi
 }
 
+git_need_commit() {
+  git diff --stat 2>/dev/null | awk -F',' '/files? changed/ { lc += $2 + $3 } END {
+    if (lc > 100) print "\n%F{005}Y U NO COMMIT!?%f"
+  }'
+}
+
 git_prompt_info () {
   ref=$($git symbolic-ref HEAD 2>/dev/null) || return
   echo "${ref#refs/heads/}"
@@ -57,7 +63,7 @@ directory_name(){
   echo "%F{003%}%1/%\%f"
 }
 
-export PROMPT=$'\n$(directory_name)$(git_dirty)$(need_push) › '
+export PROMPT=$'\n$(directory_name)$(git_dirty)$(need_push)$(git_need_commit) › '
 set_prompt () {
   export RPROMPT="$(rb_prompt)"
 }

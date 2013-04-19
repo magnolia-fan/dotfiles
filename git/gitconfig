@@ -9,8 +9,7 @@
   co = checkout
   br = checkout -b
   st = status -sb
-  ci = commit -m
-  ca = commit -am
+  ci = commit
   up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
 [color]
   diff = auto
@@ -30,3 +29,5 @@
   prompt = false
 [help]
   autocorrect = 1
+[achievement]
+	upload = true
