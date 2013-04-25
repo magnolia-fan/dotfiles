@@ -1,7 +1,8 @@
 # I'm just unable to remember this shit
 # Taken from http://www.analysisandsolutions.com/code/chmod.htm
 
-alias chmod-help='echo "\
+chmod-help () {
+  echo "\
 +---+-----+-------------------------+
 | 0 | --- | no access               |
 | 1 | --x | only execute            |
@@ -12,4 +13,5 @@ alias chmod-help='echo "\
 | 6 | rw- | read and write          |
 | 7 | rwx | read, write and execute |
 +---+-----+-------------------------+\
-"'
+"
+}
