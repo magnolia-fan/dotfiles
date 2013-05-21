@@ -1,8 +1,96 @@
-execute pathogen#infect()
-execute pathogen#helptags()
-syntax on
-filetype plugin indent on
+" When vimrc is edited, reload it
+autocmd! BufWritePost vimrc source ~/.vimrc
 
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+set nocompatible " vi improved
+filetype off     " do not load Filetype file
+
+set encoding=utf-8
+set history=1000
+set completeopt=menuone,preview
+set number
+
+" #######################
+" ### Fuck you, hjkl! ###
+" #######################
+
+noremap ; l
+noremap l k
+noremap k j
+noremap j h
+
+for prefix in ['i', 'n', 'v']
+  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
+
+" ####################
+" ### Vundle setup ###
+" ####################
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" ##############
+" ### Colors ###
+" ##############
+
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+syntax on
+colorscheme Tomorrow-Night-Eighties
+
+" #################
+" ### Powerline ###
+" #################
+
+Bundle 'Lokaltog/vim-powerline'
+set laststatus=2
+
+" ################
+" ### Nerdtree ###
+" ################
+
+Bundle 'scrooloose/nerdtree'
+nmap <C-n> :NERDTreeToggle<CR>
+
+" ############
+" ### Misc ###
+" ############
+
+Bundle 'kien/ctrlp.vim'
+
+" Ruby support?
+Bundle 'vim-ruby/vim-ruby'
+" Magic R-commands
+Bundle 'tpope/vim-rails'
+
+autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
+autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
+autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+" ##########################
+" ### Follow Your Leader ###
+" ##########################
+
+let mapleader = ","
+
+nmap <Leader>q :q!<cr>
+nmap <Leader>rc :source ~/.vimrc<cr>
+nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
+
+nmap <Leader>gu :!git up<cr>
+nmap <Leader>mkb :!mkbundle<cr>
+
+nmap <Leader>m :Rmodel<cr>
+nmap <Leader>c :Rcontroller<cr>
+nmap <Leader>s :Rspec<cr>
+
+" #####################
+" ### More Mappings ###
+" #####################
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+imap <c-e> <c-o>$
+imap <c-a> <c-o>^

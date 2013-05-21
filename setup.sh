@@ -11,5 +11,5 @@ ln -s ~/.dotfiles/ruby/irbrc ~/.irbrc
 ln -s ~/.dotfiles/ruby/aprc ~/.aprc
 
 # THE VIM
-ln -s ~/.dotfiles/vim ~/.vim
+ln -s ~/.dotfiles/vim/vim ~/.vim
 ln -s ~/.dotfiles/vim/vimrc ~/.vimrc

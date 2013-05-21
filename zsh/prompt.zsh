@@ -15,9 +15,9 @@ git_dirty() {
   else
     if [[ "$st" =~ ^nothing ]]
     then
-      echo " %F{002}($(git_prompt_info))%f"
+      echo "%F{002}($(git_prompt_info))%f"
     else
-      echo " %F{001}($(git_prompt_info))%f"
+      echo "%F{001}($(git_prompt_info))%f"
     fi
   fi
 }
@@ -42,7 +42,7 @@ need_push () {
   then
     echo ""
   else
-    echo " %F{005}↑↑%f"
+    echo "%F{006}✖%f "
   fi
 }
 
@@ -60,15 +60,16 @@ current_time(){
 }
 
 directory_name(){
-  echo "%F{003%}%1/%\%f"
+  echo "%F{012%}%1/%\%f"
 }
 
-export PROMPT=$'\n$(directory_name)$(git_dirty)$(need_push)$(git_need_commit) › '
+export PROMPT=$'\n$(directory_name)$(git_need_commit) › '
 set_prompt () {
-  export RPROMPT="$(rb_prompt)"
+  export RPROMPT="$(need_push)$(git_dirty)"
 }
 
 precmd() {
-  title "zsh" "%m" "%55<...<%~"
+  # No longer setting title. Because tmux
+  # title "zsh" "%m" "%55<...<%~"
   set_prompt
 }

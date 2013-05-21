@@ -1,4 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/chez/Code/commentatr/config/locales/activerecord/admin_user'
-let g:netrw_dirhist_2='/Users/chez/Code/commentatr/config/locales/activerecord/blog'
