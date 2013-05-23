@@ -2,8 +2,9 @@
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore ~/.gitignore
 
-# ZSH
+# ZSH and Fish
 ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -s ~/.dotfiles/fish/profile ~/.profile
 
 # Ruby
 ln -s ~/.dotfiles/ruby/gemrc ~/.gemrc

@@ -1,8 +1,6 @@
-# I'm just unable to remember this shit
-# Taken from http://www.analysisandsolutions.com/code/chmod.htm
+#!/bin/bash
 
-chmod-help () {
-  echo "\
+echo "\
 +---+-----+-------------------------+
 | 0 | --- | no access               |
 | 1 | --x | only execute            |
@@ -14,4 +12,3 @@ chmod-help () {
 | 7 | rwx | read, write and execute |
 +---+-----+-------------------------+\
 "
-}

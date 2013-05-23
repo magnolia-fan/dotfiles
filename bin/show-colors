@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for code in $(seq -w 0 255)
+do
+  printf "%03s: %bLorem ipsum dolor sit amet%b\n" "${code}" "\e[38;05;${code}m" "\e[m"
+done

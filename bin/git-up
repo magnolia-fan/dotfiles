@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+
+last_commit = `git rev-parse HEAD`.chomp
+system 'git pull --rebase'
+
+news = `git whatchanged #{last_commit}..HEAD`
+
+files = Hash.new do |hash, key|
+  hash[key] = { :status => [], :author => [] }
+end
+conflict = false
+current_author = ''
+
+news.split("\n").each do |str|
+  am = str.match(/Author: (.*?) <.*/)
+  current_author = am[1] unless am.nil?
+
+  fm = str.match(/^:.*?\.\.\. ([A-Z]+)\t(.*)/)
+  next if fm.nil?
+
+  m, status, file = *fm
+
+  files[file][:status] << status
+  files[file][:author] << current_author
+
+  conflict = true if status.length > 1
+end
+
+files.each do |file, info|
+  color_code = case info[:status].first
+    when 'D' then 31
+    when 'A' then 32
+    else 33
+  end
+  puts "\e[1m\e[#{color_code}m#{info[:status].first}\e[0m #{file} (\e[34m#{info[:author].uniq.join(', ')}\e[0m)"
+end
+
+exit if conflict
+
+# Running bundle command if needed
+system 'bundle' if files.keys.include?('Gemfile')
+
+# Migrating if schema has changed
+if files.keys.include?('db/schema.rb')
+  system 'bundle exec rake db:migrate'
+  system 'git checkout db/schema.rb' # Reseting schema
+end

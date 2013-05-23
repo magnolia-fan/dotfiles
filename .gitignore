@@ -1,2 +1,5 @@
 vim/bundle/*
 vim/vim/*
+
+fish/fish/fish_history
+fish/fish/fishd.*
