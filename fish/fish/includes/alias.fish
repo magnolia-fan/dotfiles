@@ -1,7 +1,7 @@
 alias reload! ". $HOME/.config/fish/config.fish"
 alias b "bundle exec"
 
-alias ll "ls -lah"
+alias ll "ls -lAFh"
 alias please "sudo"
 
 # Ruby & Rails

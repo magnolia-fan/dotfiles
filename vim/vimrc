@@ -9,6 +9,16 @@ set history=1000
 set completeopt=menuone,preview
 set number
 
+" Disable scrollbars
+set guioptions-=L
+set guioptions-=r
+
+" Index ignores
+set wildignore+=*/tmp/*
+
+" Set font family and size
+set gfn=Source\ Code\ Pro:h14 
+
 " #######################
 " ### Fuck you, hjkl! ###
 " #######################
@@ -18,11 +28,11 @@ noremap l k
 noremap k j
 noremap j h
 
-for prefix in ['i', 'n', 'v']
-  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-    exe prefix . "noremap " . key . " <Nop>"
-  endfor
-endfor
+" for prefix in ['i', 'n', 'v']
+"  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+"     exe prefix . "noremap " . key . " <Nop>"
+"   endfor
+" endfor
 
 " ####################
 " ### Vundle setup ###

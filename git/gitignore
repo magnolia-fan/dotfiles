@@ -1,5 +1,15 @@
+# OS X
 .DS_Store
-.bundle
-.rake_tasks
+
+# Sublime Text
 *.sublime-*
+
+# Bundler
+.bundle
 vendor/gems
+
+# Zeus
+.zeus.sock
+
+# Vim
+*.swp

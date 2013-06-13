@@ -1,3 +1,6 @@
+# OSX
+ln -s ~/.dotfiles/osx ~/.osx
+
 # Git
 ln -s ~/.dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/gitignore ~/.gitignore
