@@ -1,38 +1,13 @@
-" When vimrc is edited, reload it
-autocmd! BufWritePost vimrc source ~/.vimrc
-
 set nocompatible " vi improved
 filetype off     " do not load Filetype file
+set shell=/bin/bash
 
-set encoding=utf-8
-set history=1000
-set completeopt=menuone,preview
-set number
-
-" Disable scrollbars
-set guioptions-=L
-set guioptions-=r
-
-" Index ignores
-set wildignore+=*/tmp/*
-
-" Set font family and size
-set gfn=Source\ Code\ Pro:h14 
-
-" #######################
-" ### Fuck you, hjkl! ###
-" #######################
-
-noremap ; l
-noremap l k
-noremap k j
-noremap j h
-
-" for prefix in ['i', 'n', 'v']
-"  for key in ['<Up>', '<Down>', '<Left>', '<Right>']
-"     exe prefix . "noremap " . key . " <Nop>"
-"   endfor
-" endfor
+" Uncomment this when ready for hardcore
+for prefix in ['i', 'n', 'v']
+ for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+    exe prefix . "noremap " . key . " <Nop>"
+  endfor
+endfor
 
 " ####################
 " ### Vundle setup ###
@@ -46,61 +21,242 @@ Bundle 'gmarik/vundle'
 " ### Colors ###
 " ##############
 
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+Bundle "chriskempson/tomorrow-theme", { "rtp": "vim/" }
+
 syntax on
-colorscheme Tomorrow-Night-Eighties
+filetype plugin on
+filetype indent on
+
+colorscheme Peacock
 
 " #################
 " ### Powerline ###
 " #################
 
 Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'compatible' " (compatible, unicode, fancy)
 set laststatus=2
+set noshowmode
 
-" ################
-" ### Nerdtree ###
-" ################
+" #################
+" ### Nerd Tree ###
+" #################
 
 Bundle 'scrooloose/nerdtree'
 nmap <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.DS_Store$', '\.swp$', '\.git$', '\.bundle$', '\.pyc$']
+let NERDTreeHighlightCursorline=1
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+let NERDChristmasTree=1
+let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
+let g:NERDTreeWinSize=50
 
-" ############
-" ### Misc ###
-" ############
+" ######################
+" ### Nerd Commenter ###
+" ######################
+
+Bundle 'scrooloose/nerdcommenter'
+let g:NERDCreateDefaultMappings=0
+let g:NERDCompactSexyComs=1
+let g:NERDSpaceDelims=1
+nmap <Leader>/ <plug>NERDCommenterToggle
+vmap <Leader>/ <plug>NERDCommenterToggle
+
+" #########################
+" ### Fuzzy File Search ###
+" #########################
 
 Bundle 'kien/ctrlp.vim'
+let g:ctrlp_match_window_bottom=0
+let g:ctrlp_match_window_reversed=0
 
-" Ruby support?
+" ###########################
+" ### Ruby Syntax Support ###
+" ###########################
+
 Bundle 'vim-ruby/vim-ruby'
-" Magic R-commands
+
+" ###################
+" ### Rails Tools ###
+" ###################
+
 Bundle 'tpope/vim-rails'
 
-autocmd FileType ruby,eruby,yaml set tw=80 ai sw=2 sts=2 et
-autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
-autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+" ###########################
+" ### Magic Code Aligning ###
+" ###########################
+
+Bundle 'godlygeek/tabular'
+
+" ###################
+" ### Git Wrapper ###
+" ###################
+
+Bundle 'tpope/vim-fugitive'
+
+" ###################
+" ### Preferences ###
+" ###################
+
+set encoding=utf-8              " Because
+set showmatch                   " Show matching brackets
+set backspace=indent,eol,start  " Better backspace support
+set history=1000                " Save 1000 commands in history
+set undolevels=1000             " Save 1000 commands for undo
+set completeopt=longest,menuone " Completion preferences
+set complete=.,w,b,kspell,ss    " current buffer, other windows' buffers, dictionary, spelling
+set relativenumber              " Show line numbers (relative)
+set cursorline                  " Highlight the current line
+set tabstop=2                   " Tab size
+set shiftwidth=2                " Must be the same
+set softtabstop=2               " Must be the same
+set expandtab                   " Upaces instead of tabs
+set nowrap                      " Wrap lines
+set nolinebreak                 " Break lines softly
+set wrapscan                    " Wrap search
+set incsearch                   " Incremental search
+set ignorecase                  " Ignore case when searching
+set nohlsearch                  " Don't fucking highlight search
+set smartcase                   " Overrides ignore case in case pattern contains upper case char
+set nolist                      " Don't show sick characters
+set textwidth=120               " Text width before wrap
+set t_Co=256                    " Number of terminal colors
+set mousehide                   " Hide mouse when typing
+set guioptions-=L               " Disable scrollbars
+set guioptions-=r               " Disable scrollbars
+set wildignore+=*/tmp/*         " Index ignoresa
+set gfn=Menlo:h14               " Set font family and size
+
+" ########################
+" ### MacVim Specific  ###
+" ########################
+
+if has("gui_macvim")
+  " Use Mac option key as meta key
+  set macmeta
+  
+  " MacVIM shift+arrow-keys behavior (required in .vimrc)
+  let macvim_hig_shift_movement=1
+endif
+
+" ################
+" ### Triggers ###
+" ################
+
+if has("autocmd")
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
+  autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+  " When vimrc is edited, reload it
+  autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+
+  autocmd FocusLost * :set number
+  autocmd FocusGained * :set relativenumber
+  autocmd InsertEnter * :set number
+  autocmd InsertLeave * :set relativenumber
+endif
 
 " ##########################
 " ### Follow Your Leader ###
 " ##########################
 
+" Set the Leader key to comma instead of backslash
 let mapleader = ","
 
-nmap <Leader>q :q!<cr>
-nmap <Leader>rc :source ~/.vimrc<cr>
-nmap <Leader>bi :source ~/.vimrc<cr>:BundleInstall<cr>
+nmap <Leader>v :e $MYVIMRC<CR>
 
-nmap <Leader>gu :!git up<cr>
-nmap <Leader>mkb :!mkbundle<cr>
+nmap <Leader>s :w<CR>
+nmap <Leader>qq :q!<CR>
+nmap <Leader>rr :source $MYVIMRC<CR>
 
-nmap <Leader>m :Rmodel<cr>
-nmap <Leader>c :Rcontroller<cr>
-nmap <Leader>s :Rspec<cr>
+nmap <Leader>gu :!git up<CR>
+nmap <Leader>mkb :!mkbundle<CR>
 
-" #####################
-" ### More Mappings ###
-" #####################
+" Toggle search highlight
+nmap <Leader>h :set hlsearch!<CR>
+nmap <Leader>hh :let @/=""<CR>
+nmap <Leader>o :set paste!<CR>
 
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
-imap <c-e> <c-o>$
-imap <c-a> <c-o>^
+" Toggle wrap
+nmap <Leader>w :set wrap! list! linebreak!<CR>
+
+" Rails helpers
+nmap <Leader>rm :Rmodel 
+nmap <Leader>rc :Rcontroller 
+nmap <Leader>rs :Rspec 
+
+" Splitting windows iTerm style
+nmap <D-d> :vs<CR>
+nmap <D-D> :sp<CR>
+
+" Vertical window resizing
+map <M-<gt>> :vertical res +1^M<CR>
+nmap <M-<lt>> :vertical res -1^M<CR>
+
+" Horizontal window rezising
+nmap <M-=> :res +1^M<CR>
+nmap <M--> :res -1^M<CR>
+
+" Center line with the find occurance
+nmap n nzz
+nmap N Nzz
+
+" Siblings
+nmap <Leader>ew :e <C-R>=expand("%:p:h")."/"<CR>
+nmap <Leader>es :sp <C-R>=expand("%:p:h")."/"<CR>
+nmap <Leader>ev :vsp <C-R>=expand("%:p:h")."/"<CR>
+nmap <Leader>et :tabedit <C-R>=expand("%:p:h")."/"<CR>
+
+" Convert Ruby 1.8 hash syntax to 1.9
+nmap <Leader>r18 :%s/:\(\w\+\)\(\s\+\)=>/\1:\2/ge<CR>
+
+" #######################
+" ### Visual Mappings ###
+" #######################
+
+" Indentation TextMate style
+vmap <D-[> <gv
+vmap <D-]> >gv
+
+" Sudo to write
+cmap w!! w !sudo tee % >/dev/null
+
+" Centerize current line
+nmap j jzz
+nmap k kzz
+" Move 10 lines with Option key
+nmap <Esc>j 10j
+nmap <Esc>k 10k
+
+" Insert blank lines without entering insert mode
+nnoremap <Leader>j m`o<Esc>``
+nnoremap <Leader>k m`O<Esc>``
+
+function! ToggleLineNumbers()
+  if (&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+function! PreservePosition(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " Do the business:
+  execute a:command
+
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+nnoremap <silent> <Leader>n :call ToggleLineNumbers()<CR>
