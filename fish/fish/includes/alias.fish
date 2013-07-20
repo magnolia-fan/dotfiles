@@ -1,3 +1,6 @@
+alias vi="vim"
+alias v="vim"
+
 alias reload! ". $HOME/.config/fish/config.fish"
 alias b "bundle exec"
 

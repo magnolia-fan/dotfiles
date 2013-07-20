@@ -10,7 +10,8 @@
   br = checkout -b
   st = status -sb
   ci = commit
-  up = !sh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+  rd = rebase -i development
+  rh = rebase -i HEAD~5
 [color]
   diff = auto
   status = auto

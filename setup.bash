@@ -16,3 +16,4 @@ ln -s ~/.dotfiles/ruby/aprc ~/.aprc
 # THE VIM
 ln -s ~/.dotfiles/vim/vim ~/.vim
 ln -s ~/.dotfiles/vim/vimrc ~/.vimrc
+mkdir -p ~/.dotfiles/vim/bundle
