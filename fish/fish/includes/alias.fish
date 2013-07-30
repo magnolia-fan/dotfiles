@@ -1,4 +1,3 @@
-alias vi="vim"
 alias v="vim"
 
 alias reload! ". $HOME/.config/fish/config.fish"
@@ -16,7 +15,7 @@ alias rspec "bundle exec rspec"
 alias cap "bundle exec cap"
 alias cucumber "bundle exec cucumber"
 
-alias mkbundle "bundle install --path vendor/gems"
+alias bd "bundle install --path vendor/gems"
 alias ss "git up; bundle --quiet; bundle exec rake db:migrate"
 alias rc "rails c"
 alias rs "rails s"
@@ -32,7 +31,7 @@ alias ga "git add -u; git add .; git st"
 alias gs "git st"
 alias gd "git diff"
 alias gp "git push"
-alias gu "gut up"
+alias gu "git up"
 alias gb "git br"
 
 # OSX

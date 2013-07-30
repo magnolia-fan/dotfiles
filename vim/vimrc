@@ -26,6 +26,8 @@ Bundle "sjl/badwolf"
 Bundle "tomasr/molokai"
 Bundle "nanotech/jellybeans.vim"
 Bundle "chriskempson/base16-vim"
+Bundle "jelera/vim-gummybears-colorscheme"
+Bundle "tpope/vim-vividchalk"
 
 syntax on
 filetype plugin on
@@ -33,7 +35,7 @@ filetype indent on
 
 function! SetRandomColorScheme()
   let schemes ='peacock grunge freshcut molokai badwolf flatland jellybeans Tomorrow-Night Tomorrow-Night-Eighties '
-  let schemes.='base16-eighties '
+  let schemes.='base16-eighties vividchalk gummybears'
   let seconds=str2nr(strftime('%S'))
 
   let scheme=split(schemes)[seconds%10]
@@ -44,7 +46,7 @@ function! SetRandomColorScheme()
 endfunction
 
 " call SetRandomColorScheme()
-colorscheme peacock
+colorscheme vividchalk
 nmap <Leader>cs :call SetRandomColorScheme()<CR>
 
 
@@ -86,8 +88,8 @@ Bundle 'scrooloose/nerdcommenter'
 let g:NERDCreateDefaultMappings=0
 let g:NERDCompactSexyComs=1
 let g:NERDSpaceDelims=1
-nmap <silent> <Leader>/ <plug>NERDCommenterToggle
-vmap <silent> <Leader>/ <plug>NERDCommenterToggle
+nmap <silent> <Leader>cl <plug>NERDCommenterToggle
+vmap <silent> <Leader>cl <plug>NERDCommenterToggle
 
 
 
@@ -107,7 +109,7 @@ let g:ctrlp_match_window_reversed=1
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-markdown'
-
+Bundle 'vim-scripts/nginx.vim'
 
 " Sugar
 Bundle 'wavded/vim-stylus'
@@ -232,6 +234,7 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.slim set syntax=slim
   autocmd BufNewFile,BufRead *.coffee set syntax=coffee
   autocmd BufNewFile,BufRead *.md set syntax=markdown
+  autocmd BufNewFile,BufRead *.conf set syntax=nginx
 endif
 
 
@@ -241,12 +244,16 @@ endif
 " ##########################
 
 " Set the Leader key to comma instead of backslash
-let mapleader = ","
+" let mapleader = ","
 
 nmap <Leader>v :e $MYVIMRC<CR>
 
-nmap <Leader>s :w<CR>
-nmap <Leader>x :q!<CR>
+" Buffers
+nmap <Leader>bx :q!<CR>
+nmap <Leader>bc :bd<CR>
+nmap <Leader>bb :ls<CR>:b
+
+nmap <Leader>ss :w<CR>
 nmap <Leader>rr :source $MYVIMRC<CR>
 
 " Search for the word under cursor
@@ -278,28 +285,27 @@ nmap <Leader>et :tabedit <C-R>=expand("%:p:h")."/"<CR>
 " Convert Ruby 1.8 hash syntax to 1.9
 nmap <Leader>r18 :%s/:\(\w\+\)\(\s\+\)=>\s\+/\1:\2/ge<CR>
 
-" Buffers
-nmap <Leader>b :ls<CR>:b
-
 
 " #######################
 " ### Visual Mappings ###
 " #######################
 
 " Indentation TextMate style
-vmap <M-[> <gv
-vmap <M-]> >gv
+nmap <M-{> <<
+vmap <M-}> >>
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
 
 " Move 10 lines with Option key
-nmap <Esc>j 10j
-nmap <Esc>k 10k
+nmap <M-j> 10j
+nmap <M-k> 10k
 
 " Insert blank lines without entering insert mode
-nnoremap <Leader>j m`o<Esc>``
-nnoremap <Leader>k m`O<Esc>``
+nnoremap <S-M-j> m`o<Esc>``
+nnoremap <S-M-k> m`O<Esc>``
+
+nmap m @a
 
 function! ToggleLineNumbers()
   if (&relativenumber == 1)
