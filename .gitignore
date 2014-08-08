@@ -4,5 +4,7 @@ vim/vim/*
 fish/fish/fish_history
 fish/fish/fishd.*
 fish/nginx/
+fish/nginx.conf
 
 git/git-achievements*
+git.pgp
