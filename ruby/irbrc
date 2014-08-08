@@ -6,4 +6,4 @@ require 'ap'
 
 IRB.conf[:SAVE_HISTORY] = 10000
 IRB.conf[:AUTO_INDENT] = true
-AwesomePrint.irb!
+# AwesomePrint.irb!
