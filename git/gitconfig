@@ -2,7 +2,8 @@
   protocol = https
 [user]
   name = Gregory Eremin
-  email = magnolia_fan@me.com
+  email = g@erem.in
+	signingkey = EC26E86C
 [credential]
   helper = osxkeychain
 [alias]
@@ -12,8 +13,10 @@
   ci = commit
   rd = rebase -i development
   rh = rebase -i HEAD~5
+  cp = cherry-pick
   unstage = reset
   undo = reset --soft HEAD^
+  reword = git commit --amend -m
 [color]
   diff = auto
   status = auto
@@ -34,7 +37,7 @@
 [help]
   autocorrect = 1
 [achievement]
-	upload = true
+  upload = true
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [diff]
@@ -44,3 +47,6 @@
   trustExitCode = true
 [merge]
   tool = Kaleidoscope
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
