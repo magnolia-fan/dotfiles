@@ -1,3 +1,37 @@
 #!/bin/sh
 
-brew install autoconf automake cmake doxygen fish freetype git graphicsmagickwget htop-osx httperf jq libevent libspatialite memcached mysql nginx node openssl phantomjs postgis postgresql pyqt python python3 qt rbenv rbenv-vars readline redis riak sqlite the_silver_searcher tmux v8
+brew install \
+    autoconf \
+    automake \
+    cmake \
+    doxygen \
+    fish \
+    freetype \
+    git \
+    graphicsmagickwget \
+    htop-osx \
+    httperf \
+    jq \
+    libevent \
+    libspatialite \
+    memcached \
+    mysql \
+    nginx \
+    node \
+    openssl \
+    phantomjs \
+    postgis \
+    postgresql \
+    pyqt \
+    python \
+    python3 \
+    qt \
+    rbenv \
+    rbenv-vars \
+    readline \
+    redis \
+    riak \
+    sqlite \
+    the_silver_searcher \
+    tmux \
+    v8
