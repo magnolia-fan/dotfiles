@@ -2,6 +2,7 @@ function fish_right_prompt --description 'Write out the right prompt'
   if test -d .git
     __fish_git_unpushed
     __fish_git_dirty
+    printf " "
   end
 end
 
