@@ -1,7 +1,5 @@
-set nocompatible " vi improved
-filetype off     " do not load Filetype file
 set shell=/bin/bash
-
+cd ~/Code
 
 
 " ####################
@@ -20,7 +18,17 @@ Bundle 'gmarik/vundle'
 
 Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
 Bundle "chriskempson/tomorrow-theme", { "rtp": "vim/" }
-" Bundle "altercation/solarized", { "rtp": "vim-colors-solarized/" }
+
+Bundle "altercation/solarized", { "rtp": "vim-colors-solarized/" }
+let g:solarized_termcolors=256
+let g:solarized_termtrans=0
+let g:solarized_degrade=0
+let g:solarized_bold=0
+let g:solarized_underline=0
+let g:solarized_italic=0
+let g:solarized_contrast="normal" " low | normal | high
+let g:solarized_visibility="normal" " low | normal | high
+
 Bundle "thinkpixellab/flatland", { "rtp": "Vim/" }
 Bundle "sjl/badwolf"
 Bundle "tomasr/molokai"
@@ -28,6 +36,7 @@ Bundle "nanotech/jellybeans.vim"
 Bundle "chriskempson/base16-vim"
 Bundle "jelera/vim-gummybears-colorscheme"
 Bundle "tpope/vim-vividchalk"
+Bundle "yuratomo/neon.vim"
 
 syntax on
 filetype plugin on
@@ -35,7 +44,7 @@ filetype indent on
 
 function! SetRandomColorScheme()
   let schemes ='peacock grunge freshcut molokai badwolf flatland jellybeans Tomorrow-Night Tomorrow-Night-Eighties '
-  let schemes.='base16-eighties vividchalk gummybears'
+  let schemes.='base16-eighties vividchalk gummybears solarized neon2'
   let seconds=str2nr(strftime('%S'))
 
   let scheme=split(schemes)[seconds%10]
@@ -46,7 +55,8 @@ function! SetRandomColorScheme()
 endfunction
 
 " call SetRandomColorScheme()
-colorscheme vividchalk
+set background=dark
+colorscheme solarized
 nmap <Leader>cs :call SetRandomColorScheme()<CR>
 
 
@@ -55,10 +65,14 @@ nmap <Leader>cs :call SetRandomColorScheme()<CR>
 " ### Powerline ###
 " #################
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'compatible' " (compatible, unicode, fancy)
+" Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
+
 set laststatus=2
 set noshowmode
+" let g:Powerline_symbols = 'compatible' " (compatible, unicode, fancy)
+let g:airline_left_sep=''  " Remove left arrow separator
+let g:airline_right_sep='' " Remove right arrow separator
 
 
 
@@ -90,6 +104,10 @@ let g:NERDCompactSexyComs=1
 let g:NERDSpaceDelims=1
 nmap <silent> <Leader>cl <plug>NERDCommenterToggle
 vmap <silent> <Leader>cl <plug>NERDCommenterToggle
+nmap <D-/> <plug>NERDCommenterToggle
+vmap <D-/> <plug>NERDCommenterToggle
+smap <D-/> <plug>NERDCommenterToggle
+imap <D-/> <esc>\cl<space>
 
 
 
@@ -107,14 +125,16 @@ let g:ctrlp_match_window_reversed=1
 " ### Syntax Support ###
 " ######################
 
-Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/nginx.vim'
+Bundle 'dag/vim-fish'
 
-" Sugar
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'slim-template/vim-slim'
+
+Bundle 'jnwhiteh/vim-golang'
 
 " ###################
 " ### Rails Tools ###
@@ -155,6 +175,16 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'rking/ag.vim'
 
 
+" ############
+" ### Misc ###
+" ############
+
+Bundle 'gmarik/sudo-gui.vim'
+Bundle 'nginx.vim'
+Bundle 'tpope/vim-endwise'
+" Bundle 'vim-scripts/AutoComplPop'
+" Bundle 'ervandew/supertab'
+
 
 " ###################
 " ### Preferences ###
@@ -187,8 +217,12 @@ set mousehide                   " Hide mouse when typing
 set guioptions-=L               " Disable scrollbars
 set guioptions-=r               " Disable scrollbars
 set wildignore+=*/tmp/*         " Index ignoresa
-set gfn=Inconsolata:h18         " Set font family and size
+" set guifont=saxMono:h17         " Set font family and size
+set guifont=Source\ Code\ Pro:h15         " Set font family and size
+set linespace=4                 " Set line padding
 set hidden                      " Allow switching unsaved buffers
+set synmaxcol=160               " Limits syntax highlighting to first 120 symbols; long lines bug fix
+set number                      " Show the fucking line numbers already
 
 " Sexy highlighting colors
 highlight Search cterm=none ctermbg=198 ctermfg=7
@@ -209,35 +243,45 @@ endif
 
 
 
+" #############
+" ### UTF-8 ###
+" #############
+
+
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  " set global bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+
 " ################
 " ### Triggers ###
 " ################
 
 if has("autocmd")
+  " Code style
   autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal foldmethod=manual
   autocmd User Rails set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
+  autocmd FileType c,python,python3 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+
   " When vimrc is edited, reload it
   autocmd! BufWritePost $MYVIMRC source $MYVIMRC
 
-  " Cleanup trailing whitespaces before save
-  autocmd BufWritePre * :call PreservePosition('%s/\s\+$//e')
-
-  " Line number (relative/absolute) magic
-  autocmd FocusLost * :set number
-  autocmd FocusGained * :set relativenumber
-  autocmd InsertEnter * :set number
-  autocmd InsertLeave * :set relativenumber
-
+  " File type recognition
   autocmd BufNewFile,BufRead *.styl set syntax=stylus
   autocmd BufNewFile,BufRead *.slim set syntax=slim
   autocmd BufNewFile,BufRead *.coffee set syntax=coffee
   autocmd BufNewFile,BufRead *.md set syntax=markdown
   autocmd BufNewFile,BufRead *.conf set syntax=nginx
+  autocmd BufNewFile,BufRead Capfile,Gemfile set syntax=ruby
 endif
-
-
 
 " ##########################
 " ### Follow Your Leader ###
@@ -247,10 +291,10 @@ endif
 " let mapleader = ","
 
 nmap <Leader>v :e $MYVIMRC<CR>
+nmap <Leader>e :e
 
 " Buffers
-nmap <Leader>bx :q!<CR>
-nmap <Leader>bc :bd<CR>
+nmap <Leader>bd :bd<CR>
 nmap <Leader>bb :ls<CR>:b
 
 nmap <Leader>ss :w<CR>
@@ -261,16 +305,11 @@ nmap <Leader>d /<C-r><C-w><CR>zz
 
 " Toggle search highlight
 nmap <Leader>h :set hlsearch!<CR>
-nmap <Leader>hh :let @/=""<CR>
+nmap <Leader>hc :let @/=""<CR>
 nmap <Leader>o :set paste!<CR>
 
 " Toggle wrap
 nmap <Leader>w :set wrap! list! linebreak!<CR>
-
-" Rails helpers
-nmap <Leader>rm :Rmodel
-nmap <Leader>rc :Rcontroller
-nmap <Leader>rs :Rspec
 
 " Center line with the find occurance
 nmap n nzz
@@ -284,7 +323,7 @@ nmap <Leader>et :tabedit <C-R>=expand("%:p:h")."/"<CR>
 
 " Convert Ruby 1.8 hash syntax to 1.9
 nmap <Leader>r18 :%s/:\(\w\+\)\(\s\+\)=>\s\+/\1:\2/ge<CR>
-
+nmap <Leader>cws :call PreservePosition('%s/\s\+$//e')<CR>
 
 " #######################
 " ### Visual Mappings ###
@@ -307,13 +346,7 @@ nnoremap <S-M-k> m`O<Esc>``
 
 nmap m @a
 
-function! ToggleLineNumbers()
-  if (&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
+nnoremap <C-o> <Esc>:e<space>
 
 function! PreservePosition(command)
   " Preparation: save last search, and cursor position.
@@ -328,5 +361,3 @@ function! PreservePosition(command)
   let @/=_s
   call cursor(l, c)
 endfunction
-
-nnoremap <silent> <Leader>n :call ToggleLineNumbers()<CR>
