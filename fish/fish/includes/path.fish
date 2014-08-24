@@ -12,3 +12,5 @@ set -x PATH $HOME/.misc/git-achievements $PATH
 
 set -x PATH $HOME/go/bin $PATH
 # set -x PATH $HOME/Code/go/bin $PATH
+
+set -x PKG_CONFIG_PATH /usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig
