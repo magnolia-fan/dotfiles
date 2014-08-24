@@ -17,12 +17,10 @@ alias b "bundle exec"
 # alias http "ruby -run -e httpd . -p5000"
 
 alias rails "bundle exec rails"
-alias rake "bundle exec rake"
 alias sidekiq "bundle exec sidekiq"
 alias rspec "bundle exec rspec"
 alias cucumber "bundle exec cucumber"
 alias cap "bundle exec cap"
-alias mina "bundle exec mina"
 alias foreman "bundle exec foreman"
 
 alias bd "bundle install --path=vendor/gems --jobs=8 --verbose"
@@ -30,8 +28,6 @@ alias rc "rails c"
 alias rs "rails s"
 alias rs1 "rails s -p3001"
 alias rs2 "rails s -p3002"
-
-alias nano-console "ssh ins1.int.avs.io -t 'screen -r localhots'"
 
 # Git
 alias git "git-achievements"
