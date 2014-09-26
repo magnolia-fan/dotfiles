@@ -30,8 +30,6 @@ brew install \
     rbenv-vars \
     readline \
     redis \
-    riak \
     sqlite \
     the_silver_searcher \
-    tmux \
     v8
