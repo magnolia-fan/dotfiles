@@ -1,6 +1,6 @@
 function __bash_basedir {
     local full=$(pwd)
-    if [ $full == "/" ]
+    if [ "$full" == "/" ]
     then
         echo $full
     else
@@ -13,5 +13,10 @@ function __bash_escape {
 }
 
 function __bash_is_empty {
-    if [ "$1" == "" ]; then return 0; else return 1; fi
+    if [ "$1" == "" ]
+    then
+        return 0
+    else
+        return 1
+    fi
 }

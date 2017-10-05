@@ -1,6 +1,6 @@
 shopt -s histappend         # Append history instead of rewriting it
 shopt -s cmdhist            # Use one command per line
-HISTCONTROL=ignoreboth      # Don’t store specific lines
+HISTCONTROL=ignoreboth      # Don’t store specific lines (ignoredups + ignorespace)
 HISTTIMEFORMAT='%F %T '     # Record timestamps
 HISTFILESIZE=1000000        # Allow a larger history file
 HISTSIZE=1000000            # Allow a longer history

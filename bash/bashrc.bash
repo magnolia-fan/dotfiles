@@ -1,3 +1,6 @@
+# Enable debug
+# set -xv
+
 export TERM=xterm-256color
 export EDITOR=vim
 
@@ -9,10 +12,11 @@ export EDITOR=vim
 export PROJECTS=$HOME/Code
 
 # Go
-export GOROOT=$PROJECTS/go
-export GOPATH=$HOME/go
+export GOROOT=/usr/local/golang
+export GOPATH=/usr/local/gopath
+export CGO_ENABLED=0
 
-export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"
+# Bash stuff
 
 function __bash_import { source $HOME/.bash/$1.bash; }
 __bash_import "functions_internal"
@@ -36,6 +40,4 @@ fi
 # Misc
 #
 
-# . $HOME/.config/on_reboot.sh
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"

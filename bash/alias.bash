@@ -1,7 +1,9 @@
 # General
 
 alias ll="ls -lAFh"
-alias subl="/Applications/Sublime\ Text\ 3.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias sub="subl ."
+alias sdot="subl ~/Dotfiles"
 
 # Git
 alias git="git-achievements"
@@ -16,7 +18,7 @@ alias gp="git push"
 alias gs="git status -sb"
 alias gu="git up"
 alias gcl="git co -"
-alias gml="git merge -"
+alias gml="git merge - --no-edit"
 
 # Ruby
 alias bd="bundle install --jobs=8 --path vendor/bundle"
