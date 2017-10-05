@@ -43,6 +43,10 @@ function  c { cd $(realpath $PROJECTS/$1); }
 function _c { __bash_directory_complete $PROJECTS; }
 complete -F _c c
 
+function  cg { cd $GOPATH/src/github.com/$1; }
+function _cg { __bash_directory_complete $GOPATH/src/github.com; }
+complete -F _cg cg
+
 function __bash_directory_complete {
     local cur=${COMP_WORDS[COMP_CWORD]}
     COMPREPLY=($(compgen -o nospace -W "$(ls $1)" -- $cur))
