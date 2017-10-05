@@ -1,0 +1,8 @@
+<snippet>
+<tabTrigger>pp</tabTrigger>
+<scope>source.go</scope>
+<description>Pretty Print</description>
+<content><![CDATA[
+pretty.Println(${1})
+]]></content>
+</snippet>

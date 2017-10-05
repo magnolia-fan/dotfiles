@@ -1,0 +1,10 @@
+<snippet>
+<tabTrigger>ife</tabTrigger>
+<scope>source.go</scope>
+<description>panic on error</description>
+<content><![CDATA[
+if ${1:err} != nil {
+    ${2:panic}(${1})
+}
+]]></content>
+</snippet>

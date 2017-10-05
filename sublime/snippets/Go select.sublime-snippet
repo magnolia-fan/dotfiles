@@ -1,0 +1,13 @@
+<snippet>
+<tabTrigger>sel</tabTrigger>
+<scope>source.go</scope>
+<description>select statement</description>
+<content><![CDATA[
+select {
+case <-${1:chan}:
+    ${2}
+default:
+    ${3}
+}
+]]></content>
+</snippet>

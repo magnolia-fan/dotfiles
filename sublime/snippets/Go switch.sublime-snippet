@@ -1,0 +1,13 @@
+<snippet>
+<tabTrigger>swi</tabTrigger>
+<scope>source.go</scope>
+<description>switch statement</description>
+<content><![CDATA[
+switch ${1:var} {
+case ${2:val}
+    ${3}
+${4:default:
+    ${5}
+\}}
+]]></content>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+<tabTrigger>ran</tabTrigger>
+<scope>source.go</scope>
+<description>range loop</description>
+<content><![CDATA[
+for ${1:_}, ${2:item} := range ${3:collection} {
+    ${4}
+}
+]]></content>
+</snippet>

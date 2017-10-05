@@ -1,0 +1,8 @@
+<snippet>
+<tabTrigger>ret</tabTrigger>
+<scope>source.go</scope>
+<description>return statement</description>
+<content><![CDATA[
+return
+]]></content>
+</snippet>
