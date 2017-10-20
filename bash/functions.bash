@@ -17,6 +17,9 @@ function ssh {
         __iterm_set_bg_reset
 }
 
+function gcloc {
+    cloc $(git ls-files)
+}
 
 function shuf {
     awk 'BEGIN {srand(); OFMT="%.17f"} {print rand(), $0}' "$@" | \
