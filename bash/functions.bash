@@ -17,7 +17,7 @@ function ssh {
         __iterm_set_bg_reset
 }
 
-function gcloc {
+function gkloc {
     cloc $(git ls-files)
 }
 
