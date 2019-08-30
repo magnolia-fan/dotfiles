@@ -2,14 +2,13 @@
 
 alias ll="ls -lAFh"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias sub="subl ."
-alias sdot="subl ~/Dotfiles"
+alias dedup="awk '!visited[$0]++'"
 
 # Git
 alias git="git-achievements"
 alias ga="git add -u; git add .; git status -sb"
 alias gb="git branch -v"
-alias gc="git ci -S --allow-empty -m"
+alias gc="git ci --allow-empty -m"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gl="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %C(bold
@@ -22,9 +21,12 @@ alias gml="git merge - --no-edit"
 
 # Ruby
 alias bd="bundle install --jobs=8 --path vendor/bundle"
+alias b="bundle exec"
+alias br="bundle exec rails"
 
 # Go
 alias goi="go install ./..."
+alias gg='rg -g "*.go"'
 
 # OSX
 alias hide-desktop="defaults write com.apple.finder CreateDesktop -bool false; killall Finder"

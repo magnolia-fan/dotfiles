@@ -12,9 +12,9 @@ export EDITOR=vim
 export PROJECTS=$HOME/Code
 
 # Go
-export GOROOT=/usr/local/golang
-export GOPATH=/usr/local/gopath
-export CGO_ENABLED=0
+# export GOROOT=$HOME/go/lang
+export GOPATH=$HOME/go/path
+# export CGO_ENABLED=0
 
 # Bash stuff
 
@@ -40,4 +40,13 @@ fi
 # Misc
 #
 
+alias ag=rg
 # export SSL_CERT_FILE="/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"
+
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
+export PATH="$HOME/.cargo/bin:$PATH"

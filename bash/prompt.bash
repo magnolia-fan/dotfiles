@@ -2,8 +2,8 @@ GIT="/usr/local/bin/git"
 
 function __bash_prompt {
     local baseDir=$(__bash_basedir)
-    __iterm_set_title $baseDir
     __iterm_set_bg_color_by_dir $baseDir
+    __iterm_set_title $baseDir
 
     # Define building blocks
     local basedir="$_BOLD$_BLUE\W$_RESET_COLOR$_RESET"
@@ -45,7 +45,11 @@ function __bash_git_y_u_no_commit_warn {
 
 function __bash_git_branch {
     __bash_is_git_dir && {
-        $GIT rev-parse --symbolic-full-name --abbrev-ref HEAD
+        __bash_is_git_new_repo && {
+            echo -ne "[NEW REPO]"
+        } || {
+            $GIT rev-parse --symbolic-full-name --abbrev-ref HEAD
+        }
     }
 }
 
@@ -61,4 +65,9 @@ function __bash_git_is_pushed {
 
 function __bash_is_git_dir {
     if [ -d ".git" ]; then return 0; else return 1; fi
+}
+
+# Returns 1 if there are no existing commits in the repo
+function __bash_is_git_new_repo {
+    __bash_is_empty $($GIT rev-list --all --parents --max-count=1)
 }

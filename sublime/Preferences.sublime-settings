@@ -2,7 +2,7 @@
 	"animation_enabled": false,
 	"caret_style": "phase",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/Colorsublime - Themes/peacocks-in-space.tmTheme",
+	"color_scheme": "Packages/Colorsublime - Themes/Dracula.tmTheme",
 	"default_line_ending": "unix",
 	"drag_text": false,
 	"draw_minimap_border": false,
@@ -20,17 +20,16 @@
 		".bundle",
 		".sass-cache",
 		"__pycache__",
-		"vendor",
 		"node-modules"
 	],
-	"font_face": "Inconsolata",
+	"font_face": "Hack",
 	"font_options":
 	[
 		"subpixel_antialias",
 		"no_bold",
 		"no_italic"
 	],
-	"font_size": 18.0,
+	"font_size": 12.0,
 	"gpu_window_buffer": true,
 	"gutter": true,
 	"highlight_line": true,

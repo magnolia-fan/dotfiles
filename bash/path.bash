@@ -1,6 +1,7 @@
 export PATH=/usr/local/bin:$PATH  # Homebrew tools
 export PATH=$PATH:/usr/local/sbin # Homebrew apps
 export PATH=$PATH:$HOME/Dotfiles/bin # My stuff
+export PATH=$PATH:$HOME/.bin
 
 # NodeJS
 # export PATH=$PATH:/usr/local/share/npm/bin
@@ -13,9 +14,15 @@ export PATH=$HOME/.rbenv/shims:$PATH # Gem binaries
 export PATH=$PATH:$PROJECTS/git-achievements
 
 # Go
-export PATH=$PATH:$GOROOT/bin # Go runtime binaries
+# export PATH=$PATH:$GOROOT/bin # Go runtime binaries
+export PATH=$PATH:$HOME/go/lang/bin # Go package binaries
 export PATH=$PATH:$GOPATH/bin # Go package binaries
 
 # Python
 # WTF
 export PKG_CONFIG_PATH=/usr/local/opt/python3/Frameworks/Python.framework/Versions/3.4/lib/pkgconfig
+
+export PATH=$PATH:/usr/local/Cellar/llvm/8.0.0_1/bin
+
+# Rust
+export PATH=$PATH:$HOME/.cargo/bin
