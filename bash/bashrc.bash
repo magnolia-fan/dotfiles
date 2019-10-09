@@ -14,9 +14,6 @@ export PROJECTS=$HOME/Code
 # Go
 # export GOROOT=$HOME/go/lang
 export GOPATH=$HOME/go/path
-# export CGO_ENABLED=0
-
-# Bash stuff
 
 function __bash_import { source $HOME/.bash/$1.bash; }
 __bash_import "functions_internal"
@@ -29,9 +26,8 @@ __bash_import "prompt"
 __bash_import "functions"
 __bash_import "docker"
 __bash_import "secrets"
-# __bash_import "homebrew_completions"
 
-
+# Homebrew bash completions
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi

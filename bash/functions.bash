@@ -2,10 +2,6 @@ function reload {
     source $HOME/.bash_profile
 }
 
-function psg {
-    ps aux | head -n1
-    ps aux | grep $1 | grep -v grep
-}
 function ssh {
     # Change tab title
     local host=$(echo $1 | cut -d@ -f1)

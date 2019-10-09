@@ -41,12 +41,12 @@ exit if conflict
 system 'bundle' if files.keys.include?('Gemfile.lock')
 
 # Migrating if schema has changed
-if files.keys.include?('db/schema.rb')
-  system 'bundle exec rake db:migrate'
-  system 'git checkout db/schema.rb' # Reseting schema
-end
+# if files.keys.include?('db/schema.rb')
+#   system 'bundle exec rake db:migrate'
+#   system 'git checkout db/schema.rb' # Reseting schema
+# end
 
-if files.keys.grep(/^app\/assets/).length > 0
-  puts 'Compiling assets...'
-  system 'bundle exec rake assets:precompile > /dev/null 2>&1'
-end
+# if files.keys.grep(/^app\/assets/).length > 0
+#   puts 'Compiling assets...'
+#   system 'bundle exec rake assets:precompile > /dev/null 2>&1'
+# end
