@@ -24,9 +24,7 @@ function shuf {
 }
 
 function __bash_ssh_complete {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    local opts=$(cat $HOME/.ssh/known_hosts | cut -d' ' -f1 | cut -d, -f1)
-    COMPREPLY=($(compgen -o nospace -W "$opts" -- $cur))
+    __bash_complete "$(cat $HOME/.ssh/known_hosts | cut -d' ' -f1 | cut -d, -f1)"
 }
 complete -F __bash_ssh_complete ssh
 
@@ -46,7 +44,15 @@ function  cg { cd $GOPATH/src/github.com/$1; }
 function _cg { __bash_directory_complete $GOPATH/src/github.com; }
 complete -F _cg cg
 
+#
+# Misc
+#
+
 function __bash_directory_complete {
+    __bash_complete "$(ls $1)"
+}
+
+function __bash_complete {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=($(compgen -o nospace -W "$(ls $1)" -- $cur))
+    COMPREPLY=($(compgen -o nospace -W "$1" -- $cur))
 }

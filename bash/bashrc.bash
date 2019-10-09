@@ -24,6 +24,7 @@ __bash_import "iterm"
 __bash_import "alias"
 __bash_import "prompt"
 __bash_import "functions"
+__bash_import "gover"
 __bash_import "docker"
 __bash_import "secrets"
 
