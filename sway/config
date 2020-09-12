@@ -1,0 +1,25 @@
+# Read `man 5 sway` for a complete reference.
+
+# It's good to keep it handy in case I would like to try it again
+# xwayland disable
+
+# Primary modifier key
+# Mod1 for Alt
+# Mod4 for Super
+set $mod Mod4
+
+# Direction keys
+set $up i
+set $left j
+set $down k
+set $right l
+
+set $uifont "pango:Source Sans Pro 11"
+font $uifont
+
+include @sysconfdir@/sway/config.d/*
+include $HOME/.config/sway/config.d/*
+
+# Color Scheme
+include $HOME/.config/sway/themes/dracula
+# include $HOME/.config/sway/themes/default

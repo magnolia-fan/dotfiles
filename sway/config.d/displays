@@ -1,0 +1,6 @@
+#
+# Display configurations
+#
+
+# Set UI scale to 1.5 on home display (AOC U2790)
+output "Unknown U2790B 0x000007CE" scale 1.5

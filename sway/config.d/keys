@@ -1,0 +1,44 @@
+#
+# Misc Keybindings
+#
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -b 'Yes, exit sway' 'swaymsg exit'
+
+# Lock Screen (command is from dotfiles/bin)
+bindsym $mod+Alt+l exec screens-lock
+
+bindsym --locked Alt+F10 exec screens-off
+bindsym --locked Alt+F1 exec screens-on
+
+# Start a terminal
+bindsym $mod+Return exec termite
+
+# Start your launcher
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu bemenu-run --fn $uifont -b -p "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
+# set $menu rofi -show-icons -modi drun -show
+set $menu wofi -I -i -W 600 -p 'Launch Application' --show drun
+bindsym $mod+d exec $menu
+
+# Mission Control
+bindsym $mod+Shift+d exec mymenu
+
+# Interactive screenshot menu
+bindsym $mod+Shift+p exec sway-interactive-screenshot
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl -p spotify,plasma-browser-integration play-pause
+bindsym XF86AudioNext exec playerctl -p spotify,plasma-browser-integration next
+bindsym XF86AudioPrev exec playerctl -p spotify,plasma-browser-integration previous

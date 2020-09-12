@@ -1,0 +1,8 @@
+# Default theme that came with sway
+# Changed focused background color a bit
+
+# class                  border  backgr. text    wtf   . child_border # wtf = indicator?
+client.focused          #14568c #0e3f66 #ffffff #14568c #14568c
+client.focused_inactive #333333 #5f676a #ffffff #484e50 #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+client.urgent           #2f343a #900000 #ffffff #900000 #900000

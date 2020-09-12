@@ -1,0 +1,38 @@
+#
+# Resizing
+#
+
+set $step_small 10px
+set $step_big 50px
+set $part_small 30
+set $part_big 70
+
+mode "resize" {
+    # Small steps
+    bindsym $left resize shrink width $step_small
+    bindsym $down resize grow height $step_small
+    bindsym $up resize shrink height $step_small
+    bindsym $right resize grow width $step_small
+    bindsym Left resize shrink width $step_small
+    bindsym Down resize grow height $step_small
+    bindsym Up resize shrink height $step_small
+    bindsym Right resize grow width $step_small
+
+    # Big steps with Shift
+    bindsym Shift+$left resize shrink width $big_step
+    bindsym Shift+$down resize grow height $big_step
+    bindsym Shift+$up resize shrink height $big_step
+    bindsym Shift+$right resize grow width $big_step
+    bindsym Shift+Left resize shrink width $big_step
+    bindsym Shift+Down resize grow height $big_step
+    bindsym Shift+Up resize shrink height $big_step
+    bindsym Shift+Right resize grow width $big_step
+
+    bindsym u resize set width $part_small ppt
+    bindsym o resize set width $part_big ppt
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"

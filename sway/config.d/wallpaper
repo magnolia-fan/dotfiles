@@ -1,0 +1,11 @@
+#
+# Wallpaper
+#
+
+set $wallpaper_dir $HOME/Pictures/Wallpapers
+set $wallpaper $wallpaper_dir/F29/3-night.png
+
+output * bg $wallpaper fill
+
+# Timed wallpaper, disabled due to bugs
+# exec settimed -m=fill $wallpaper_dir/F29/fedora29-timed.stw
