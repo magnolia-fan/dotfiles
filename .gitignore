@@ -1,12 +1,7 @@
+bash/secrets/*
+
+# Ignore this file by default, use -f flag to force changes
+git/gitconfig
+
 vim/bundle/*
 vim/vim/*
-
-fish/fish/fish_history
-fish/fish/fishd.*
-fish/nginx/
-fish/nginx.conf
-
-git/git-achievements*
-git.pgp
-
-bash/secrets/*
