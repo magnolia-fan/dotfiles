@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$(nmcli -g GENERAL.STATE con show $VPN_NAME || true)" == "activated" ]; then
+	choices=Disconnect
+else
+	choices=Connect
+fi
+
+choice=$(echo -e $choices | wofi -i -d -W 400 -H 250 -p $VPN_NAME)
+case $choice in
+	'Connect')
+		nmcli con up $VPN_NAME
+		;;
+	'Disconnect')
+		nmcli con down $VPN_NAME
+esac
+

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+service_dir="$HOME/.config/systemd/user"
+choice=$(grep "Description=" $service_dir/*.service | cut -d'=' -f2 | wofi -i -d -W 600 -H 300 -p Service)
+[[ -z "$choice" ]] && exit
+
+service=$(grep "$choice" $service_dir/*.service | cut -d':' -f1 | rev | cut -d'/' -f1 | rev)
+cnt=$(systemctl --user status $service | grep -c "active (running)")
+service_status=$([[ "$cnt" -eq "0" ]] && echo "Inactive" || echo "Active")
+
+if [ "$service_status" = "Active" ]; then
+	choices="Restart\nStop"
+else
+	choices="Start"
+fi
+
+choice=$(echo -e $choices | wofi -i -d -W 400 -H 250 -p "Status: $service_status")
+case $choice in
+	'Start')
+		systemctl --user start $service
+		;;
+	'Restart')
+		systemctl --user restart $service
+		;;
+	'Stop')
+		systemctl --user stop $service
+esac
+

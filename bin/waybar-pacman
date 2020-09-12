@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Used by waybar
+# Returns a message when there is more than 50 packages available for update
+
+nupdates=$(checkupdates | wc -l)
+if [ $nupdates -gt 50 ]; then
+    echo "   $nupdates  "
+fi

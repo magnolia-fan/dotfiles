@@ -1,8 +1,8 @@
-## .dotfiles
+## Gregory's dotfiles
 
-Installation:
+### Installation
 
 ```bash
-git clone git@github.com:magnolia-fan/dotfiles.git ~/.dotfiles
-~/.dotfiles/setup.bash
+git clone git@github.com:localhots/dotfiles.git ~/dotfiles
+~/dotfiles/setup.bash
 ```

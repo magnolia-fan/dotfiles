@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# export VPN_NAME=MyVPN from dotfiles/secrets/vpn
+if [ "$(nmcli -g GENERAL.STATE con show $VPN_NAME)" == "activated" ]; then
+	echo Disconnecting
+	nmcli con down "$VPN_NAME"
+else
+	echo Connecting
+	nmcli con up "$VPN_NAME"
+fi
+
+exit 0

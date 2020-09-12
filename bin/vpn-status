@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# export VPN_NAME=MyVPN from dotfiles/secrets/vpn
+if [ "$(nmcli -g GENERAL.STATE con show $VPN_NAME)" == "activated" ]; then
+	echo ""
+else
+	echo ""
+fi

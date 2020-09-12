@@ -1,0 +1,16 @@
+#!/bin/bash
+
+CHOICE=`wofi -i -d -W 400 -H 250 -p 'Choose' << EOF
+Services
+VPN
+EOF`
+
+case $CHOICE in
+	'Services')
+		mymenu-services
+	;;
+	'VPN')
+		mymenu-vpn
+	;;
+esac
+

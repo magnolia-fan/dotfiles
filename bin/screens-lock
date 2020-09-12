@@ -1,0 +1,3 @@
+#!/bin/bash
+
+swaylock --scaling fill -i $HOME/Pictures/Wallpapers/dots-dark-4k-vi-2560x1440.jpg

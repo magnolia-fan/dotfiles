@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+
+# This script is used by dotfiles/bin/sway-interactive-screenshot to align window
+# coordinates, sizes and names in columns.
+#
+# Turns this:
+# 2560,60 760x1020	wl-clipsync
+# 3320,60 1160x1020	go-api
+# 768,60 1792x1380	Trending repositories on GitHub today - Mozilla Firefox
+# 0,60 768x675	screenshot-wofi-text-align (~/dotfiles/bin) - VIM
+# 0,765 768x675	Pictures
+#
+# Into this:
+# 2560,60  760x1020	  wl-clipsync
+# 3320,60  1160x1020	go-api
+# 768,60   1792x1380	Trending repositories on GitHub today - Mozilla Firefox
+# 0,60     768x675	  screenshot-wofi-text-align (~/dotfiles/bin) - VIM
+# 0,765    768x675	  Pictures
+
+max_pos_len = 0
+max_dim_len = 0
+items = STDIN.read.split("\n").map do |row|
+  row.match(/(\d+,\d+)\s(\d+x\d+)\t(.*)/) do |m|
+  max_pos_len = m[1].length if m[1].length > max_pos_len
+  max_dim_len = m[2].length if m[2].length > max_dim_len
+  {pos: m[1], dim: m[2], name: m[3]}
+  end
+end
+
+items.each do |item|
+  puts "#{item[:pos].ljust(max_pos_len)}  "+
+  "#{item[:dim].ljust(max_dim_len)} \t#{item[:name]}"
+end
