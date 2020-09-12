@@ -22,7 +22,7 @@
 		"__pycache__",
 		"node-modules"
 	],
-	"font_face": "Hack",
+	"font_face": "Inconsolata",
 	"font_options":
 	[
 		"subpixel_antialias",
@@ -30,16 +30,9 @@
 		"no_italic"
 	],
 	"font_size": 12.0,
-	"gpu_window_buffer": true,
 	"gutter": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
-	"ignored_packages":
-	[
-		"CoffeeScript",
-		"GraphvizPreview",
-		"Vintage"
-	],
 	"indent_guide_options":
 	[
 		"draw_normal",
