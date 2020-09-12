@@ -1,0 +1,12 @@
+[Unit]
+Description=swayidle: Manages lockscreen and display
+
+[Service]
+ExecStart=/sbin/swayidle \
+    timeout 300 /home/gregory/dotfiles/bin/screens-lock \
+    timeout 60 /home/gregory/dotfiles/bin/screens-off \
+    resume /home/gregory/dotfiles/bin/screens-on \
+    before-sleep /home/gregory/dotfiles/bin/screens-lock
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=kwalletd5: KDE Wallet Manager daemon
+
+[Service]
+ExecStart=env QT_QPA_PLATFORM=wayland kwalletd5
+
+[Install]
+WantedBy=default.target

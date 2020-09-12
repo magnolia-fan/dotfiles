@@ -1,0 +1,8 @@
+[Unit]
+Description=wl-clipsync: Synchronizes primary and clipboard paste buffers
+
+[Service]
+ExecStart=/home/gregory/go/path/bin/wl-clipsync -i 300ms
+
+[Install]
+WantedBy=default.target

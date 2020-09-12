@@ -1,0 +1,8 @@
+[Unit]
+Description=mako: A lightweight Wayland notification daemon
+
+[Service]
+ExecStart=mako
+
+[Install]
+WantedBy=default.target
