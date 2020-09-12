@@ -1,11 +1,8 @@
 # General
-
-alias ll="ls -lAFh"
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias ll="ls -lAFh --color"
 alias dedup="awk '!visited[$0]++'"
 
 # Git
-alias git="git-achievements"
 alias ga="git add -u; git add .; git status -sb"
 alias gb="git branch -v"
 alias gc="git ci --allow-empty -m"
@@ -20,16 +17,11 @@ alias gcl="git co -"
 alias gml="git merge - --no-edit"
 
 # Ruby
-alias bd="bundle install --jobs=8 --path vendor/bundle"
+alias bd="bundle install --jobs=8"
+alias bdc="bundle config set path 'vendor/bundle'"
 alias b="bundle exec"
 alias br="bundle exec rails"
 
 # Go
 alias goi="go install ./..."
 alias gg='rg -g "*.go"'
-
-# OSX
-alias hide-desktop="defaults write com.apple.finder CreateDesktop -bool false; killall Finder"
-alias show-desktop="defaults write com.apple.finder CreateDesktop -bool true; killall Finder"
-alias prefs="/Applications/System\ Preferences.app/Contents/MacOS/System\ Preferences"
-alias admin-prefs="sudo /Applications/System\ Preferences.app/Contents/MacOS/System\ Preferences"

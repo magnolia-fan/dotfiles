@@ -7,17 +7,17 @@ _DIM=$(__bash_escape 2)
 _ITALIC=$(__bash_escape 3)
 _UNDERLINED=$(__bash_escape 4)
 _BLINK=$(__bash_escape 5)
-# _BRIGHT=$(__bash_escape 6)
+_BRIGHT=$(__bash_escape 6)
 _INVERTED=$(__bash_escape 7)
 _HIDDEN=$(__bash_escape 8) # E.g. for passwords
 
 _RESET=$(__bash_escape 0)
-_RESET_BOLD=$(__bash_escape 21) # Doesn't work?
+_RESET_BOLD=$(__bash_escape 21)
 _RESET_DIM=$(__bash_escape 22)
 _RESET_ITALIC=$(__bash_escape 23)
 _RESET_UNDERLINED=$(__bash_escape 24)
 _RESET_BLINK=$(__bash_escape 25)
-# _RESET_BRIGHT=$(__bash_escape 26)
+_RESET_BRIGHT=$(__bash_escape 26)
 _RESET_INVERTED=$(__bash_escape 27)
 _RESET_HIDDEN=$(__bash_escape 28)
 

@@ -1,9 +1,8 @@
-GIT="/usr/local/bin/git"
+GIT="/sbin/git"
 
 function __bash_prompt {
     local baseDir=$(__bash_basedir)
-    __iterm_set_bg_color_by_dir $baseDir
-    __iterm_set_title $baseDir
+    __window_title $baseDir
 
     # Define building blocks
     local basedir="$_BOLD$_BLUE\W$_RESET_COLOR$_RESET"

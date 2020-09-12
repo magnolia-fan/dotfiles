@@ -9,4 +9,4 @@ fish/nginx.conf
 git/git-achievements*
 git.pgp
 
-bash/secrets.bash
+bash/secrets/*
