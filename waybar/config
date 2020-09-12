@@ -1,0 +1,102 @@
+{
+  "height": 30,
+  "modules-left": [
+    "sway/workspaces",
+    "sway/mode",
+    "custom/media"
+  ],
+  "modules-right": [
+    "network",
+    "custom/vpn",
+    "pulseaudio",
+    "custom/pacman",
+    "temperature",
+    "battery",
+    "clock",
+    "tray",
+    "idle_inhibitor"
+  ],
+  "custom/vpn": {
+    "format": "  {}  ",
+    "exec": "vpn-status",
+    "interval": 1
+  },
+  "custom/pacman": {
+    "format": "{}",
+    "exec": "waybar-pacman",
+    "interval": 300
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%b %d, %a  %H:%M}",
+    "tooltip-format": "<big>{:%B %Y}</big>\n<tt>{calendar}</tt>"
+  },
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "interval": 10,
+    "tooltip-format-wifi": "SSID: {essid}\nSignal strength: {signalStrength}% ({signaldBm} dBm)\nFreqency: {frequency}MHz\n\nIP: {ipaddr}\nInterface: {ifname}",
+    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click-right": "nm-connection-editor"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click-right": "pavucontrol"
+  }
+}
