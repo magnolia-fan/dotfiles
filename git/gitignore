@@ -8,9 +8,6 @@
 .bundle
 vendor/gems
 
-# Zeus
-.zeus.sock
-
 # Vim
 *.swp
 *.swo

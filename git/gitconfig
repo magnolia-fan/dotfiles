@@ -1,10 +1,6 @@
-[hub]
-  protocol = https
 [user]
-	name = Gregory Eremin
-	email = root@localhost
-[credential]
-  helper = osxkeychain
+  name = Gregory Eremin
+  email = root@localhost
 [alias]
   co = checkout
   br = checkout -b
@@ -12,10 +8,6 @@
   cp = cherry-pick
   st = stash
   sp = stash pop
-  rim = rebase -i master
-  rih = rebase -i HEAD~5
-  rc = rebase --continue
-  ra = rebase --abort
   undo = reset --soft HEAD^
   reword = commit --amend -m
   last = for-each-ref --sort=-committerdate --count=10 refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) - %(color:blue)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname)'
@@ -27,39 +19,9 @@
 [core]
   excludesfile = ~/.gitignore
   editor = vim
-	pager = diff-so-fancy | less --tabs=4 -R
 [push]
   default = current
 [apply]
   whitespace = nowarn
-[mergetool]
-  keepBackup = false
-  prompt = false
-[difftool]
-  prompt = false
-[help]
-  autocorrect = 1
-[achievement]
-  upload = true
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
 [gpg]
-	program = gpg2
+  program = gpg2
