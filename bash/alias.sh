@@ -25,3 +25,7 @@ alias br="bundle exec rails"
 # Go
 alias goi="go install ./..."
 alias gg='rg -g "*.go"'
+
+alias ytdl="youtube-dl -f 'bestvideo+bestaudio'"
+alias cr="cargo run --quiet --"
+

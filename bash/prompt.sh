@@ -5,12 +5,13 @@ function __bash_prompt {
     __window_title $baseDir
 
     # Define building blocks
-    local basedir="$_BOLD$_BLUE\W$_RESET_COLOR$_RESET"
+    local userhost="$_BOLD$_BLUE\u@\h$_RESET_COLOR$_RESET"
+    local basedir="$_BOLD$_GREEN\W$_RESET_COLOR$_RESET"
     local git_y_u_no_commit="$_MAGENTA$(__bash_git_y_u_no_commit_warn)$_RESET_COLOR"
     local git_branch="$(__bash_prompt_git)"
     local cursor="\[${_DIM}\]›\[$_RESET\]"
 
-    PS1="\n$basedir$git_branch$git_y_u_no_commit\n$cursor\[$_RESET\] "
+    PS1="\n$userhost $basedir$git_branch$git_y_u_no_commit\n$cursor\[$_RESET\] "
 }
 PROMPT_COMMAND=__bash_prompt # <--- ta-da!
 
